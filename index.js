@@ -55,7 +55,8 @@ return movies.map ((movie) => movie.title)
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating() {}
+function checkIfAnyMovieHasRating(movies) {}
+
 
 /**
  * findById()
@@ -73,7 +74,19 @@ function checkIfAnyMovieHasRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  if (!movies.length) {
+    throw "Error"
+  }
+  return movies.find ((movie) => {
+    if (movie.imdbID !== id) {
+      return null
+    }
+    if (movie.imdbID === id) {
+      return movie.title 
+    }
+})
+}
 
 /**
  * filterByGenre()
@@ -97,7 +110,19 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) { 
+if (!movies.length) {
+  throw "Error";
+}
+return movies.filter ((movie) => {
+  if (movie.genre.toLowerCase() === genre.toLowerCase()) {
+    return movie.title
+  }
+  else {
+    return []
+  }
+})
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -123,7 +148,16 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  if (!movies.length) {
+    throw "Error"
+  }
+  return movies.filter((movie) => {
+    if (Number(movie.released) <= year) {
+      return movie.title
+  }
+})
+}
 
 /**
  * getRottenTomatoesScoreByMovie()
